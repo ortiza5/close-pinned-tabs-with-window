@@ -36,3 +36,10 @@ chrome.windows.onRemoved.addListener((windowId) => {
     chrome.storage.local.clear();
   });
 });
+
+// clear storage after 1 second to allow dragging pinned tabs to new windows
+chrome.storage.local.onChanged.addListener(() => {
+  setTimeout(() => {
+    chrome.storage.local.clear();
+  }, 1000);
+});
